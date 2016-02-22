@@ -19,7 +19,6 @@ RUN curl -L https://github.com/docker/machine/releases/download/v0.6.0/docker-ma
 RUN pip install awscli docker-compose
 
 #Add config files
-ADD config/tmux /root/.tmux.conf
 ADD config/vim /root/.vimrc
 ADD config/bash /root/.bashrc
 ADD config/git /root/.gitconfig

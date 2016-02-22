@@ -19,6 +19,8 @@
 # ----------------------------------------------------------------------------- #
 
 [user]
+    name = Eric Sage
+    email = eric.david.sage@gmail.com
 
 # ----------------------------------------------------------------------------- #
 # ------------------------------- O P T I O N S ------------------------------- #
@@ -26,7 +28,7 @@
 
 [core]
     editor = vim       # Use vim as the default editor
-    pager = less -x4   # Page (read) files uses less, set tab spots at multiples of 4
+    pager = less -x4   # Page files uses less, set tab spots at multiples of 4
 
 [push]
     default = simple   # Find and push only to the same branch on the remote
@@ -43,7 +45,7 @@
 
 [color "branch"]
     current = yellow reverse
-    local = yello
+    local = yellow
     remote = green
 
 [color "diff"]
