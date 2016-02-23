@@ -41,7 +41,7 @@ mkdir -p ~/Pictures
 mkdir -p ~/Videos
 mkdir -p ~/Graphics
 mkdir -p ~/Code
-mkdir -p ~/Code/src
+mkdir -p ~/Code/src/github.com/ericsage
 mkdir -p ~/Code/pkg
 mkdir -p ~/Code/bin
 
