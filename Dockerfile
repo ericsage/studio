@@ -6,6 +6,9 @@ MAINTAINER Eric Sage <eric.david.sage@gmail.com>
 #Clean root
 RUN rm /root/*
 
+#Set locale
+localectl set-locale LANG=en_US.UTF-8
+
 #Add repositories
 ADD form/docker /etc/yum.repos.d/docker.repo
 RUN rpm -iUvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
