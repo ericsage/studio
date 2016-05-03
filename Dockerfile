@@ -7,7 +7,7 @@ MAINTAINER Eric Sage <eric.david.sage@gmail.com>
 RUN rm /root/*
 
 #Set locale
-localectl set-locale LANG=en_US.UTF-8
+RUN localectl set-locale LANG=en_US.UTF-8
 
 #Add repositories
 ADD form/docker /etc/yum.repos.d/docker.repo
