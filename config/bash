@@ -161,6 +161,13 @@ httpHeaders () { /usr/bin/curl -I -L $@ ; }
 # -> httpDebug: Download a web page and show info on what took time <- #
 httpDebug () { /usr/bin/curl $@ -o /dev/null -w "dns: %{time_namelookup} connect: %{time_connect} pretransfer: %{time_pretransfer} starttransfer: %{time_starttransfer} total: %{time_total}\n" ; }
 # ----------------------------------------------- #
+#
+# ----------------------------------------------------------------------------- #
+# ------------------------------- E X P O R T S ------------------------------- #
+# ----------------------------------------------------------------------------- #
+
+# -> Locale <- #
+export LANG=en_US.UTF-8
 
 # ----------------------------------------------------------------------------- #
 # ------------------------------- I M P O R T S ------------------------------- #
