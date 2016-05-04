@@ -8,7 +8,7 @@ RUN rm /root/*
 
 #Add repositories
 ADD form/docker /etc/yum.repos.d/docker.repo
-RUN rpm -iUvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+RUN rpm -iUvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-6.noarch.rpm
 
 #Install software
 RUN yum update -y
