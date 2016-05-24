@@ -1,10 +1,10 @@
 
 FROM ericsage/os
 
-RUN yum install -y sudo
+alias sudo=""
 
 RUN curl -sSf https://static.rust-lang.org/rustup.sh | sh
 
-RUN yum remove sudo
+unalias sudo
 
 CMD ["/bin/bash"]
