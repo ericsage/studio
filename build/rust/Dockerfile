@@ -1,10 +1,10 @@
 
 FROM ericsage/os
 
-alias sudo=""
+RUN alias sudo=""
 
 RUN curl -sSf https://static.rust-lang.org/rustup.sh | sh
 
-unalias sudo
+RUN unalias sudo
 
 CMD ["/bin/bash"]
