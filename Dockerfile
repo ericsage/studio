@@ -30,6 +30,7 @@ RUN curl https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.tar.g
 RUN tar xvzf gcsdk.tar.gz
 RUN /root/Code/google-cloud-sdk/install.sh < /root/Code/google-cloud.txt
 RUN rm gcsdk.tar.gz google-cloud.txt
+RUN echo "Y" | gcloud components install kubectl
 
 #Configure vim
 RUN git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
