@@ -24,11 +24,11 @@ ARROW=''
 RESET='\e[0m'
 BLACK_BG='\e[48;5;0m'
 WHITE_FG='\e[38;5;255m'
-BLUE_FG='\e[38;5;4m'
-BLUE_BG='\e[48;5;4m'
-GREEN_FG='\e[38;5;2m'
-GREEN_BG='\e[48;5;2m'
-export PS1="\n\[$BLUE_BG\]\[$WHITE_FG\] \w \[$RESET\]\[$BLUE_FG\]\[$GREEN_BG\]\[$ARROW\]\[$WHITE_FG\] \$(gb) \[$RESET\]\[$BLACK_BG\]\[$GREEN_FG\]\[$ARROW\]\[$RESET\] "
+RED_FG='\e[38;5;1m'
+RED_BG='\e[48;5;1m'
+YELLOW_FG='\e[38;5;9m'
+YELLOW_BG='\e[48;5;9m'
+export PS1="\n\[$RED_BG\]\[$WHITE_FG\] \w \[$RESET\]\[$RED_FG\]\[$YELLOW_BG\]\[$WHITE_FG\] \$(gb) \[$RESET\]\[$BLACK_BG\]\[$YELLOW_FG\]\[$RESET\] "
 # ----------------------------------------------------------------------------- #
 
 # ----------------------------------------------------------------------------- #
