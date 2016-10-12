@@ -14,7 +14,7 @@ RUN rpm -iUvh http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.
 RUN yum update -y
 RUN yum groupinstall -y 'Development Tools'
 RUN yum groupinstall -y 'Console Internet Tools'
-RUN yum install -y tmux vim python-pip python-setuptools python-wheel ctags git man-pages man docker-engine tree
+RUN yum install -y tmux vim python-pip python-setuptools python-wheel ctags git man-pages man docker-engine tree wget
 RUN curl -L https://github.com/docker/machine/releases/download/v0.8.2/docker-machine-`uname -s`-`uname -m` > /usr/bin/docker-machine && chmod +x /usr/bin/docker-machine
 
 RUN pip install --upgrade pip
