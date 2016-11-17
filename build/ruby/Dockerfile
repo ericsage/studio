@@ -10,7 +10,3 @@ RUN mv ruby /usr/bin
 
 WORKDIR /root
 RUN rm -rf stable-snapshot ruby.tar.gz
-
-CMD ["/bin/bash"]
-
-
