@@ -64,10 +64,15 @@ mkdir -p ~/.vim/undo
 
 # -> DOCKER <- #
 
+alias d='docker'
 alias dc='docker-compose'
 alias dm='docker-machine'
 alias dmaws='docker-machine create --driver amazonec2 --amazonec2-region $AWS_DEFAULT_REGION --amazonec2-access-key $AWS_ACCESS_KEY_ID  --amazonec2-secret-key $AWS_SECRET_ACCESS_KEY --amazonec2-vpc-id $AWS_VPC_ID'
 alias dmgce='docker-machine create --driver google --google-project $GOOGLE_CLOUD_PROJECT'
+
+# -> KUBERNETES <- #
+
+alias k='kubectl'
 
 # -> TMUX <- #
 
@@ -124,14 +129,6 @@ alias cgh='cd ~/Code/src/github.com'
 # ----------------------------------------------------------------------------- #
 
 export PATH=$HOME/Code/bin/:$HOME/Code/go/bin:$PATH
-
-# -> GO <- #
-
-export GOPATH=$HOME/Code
-
-# -> HASKELL STACK <- #
-
-export PATH=$HOME/.local/bin:$PATH
 
 # ----------------------------------------------------------------------------- #
 # ----------------------------- F U N C T I O N S ----------------------------- #
