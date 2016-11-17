@@ -9,6 +9,4 @@ RUN make && make install
 WORKDIR /root
 RUN rm -rf Python-*
 
-CMD ["/bin/bash"]
-
 
