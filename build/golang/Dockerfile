@@ -9,6 +9,4 @@ RUN echo 'export PATH=$PATH:/usr/bin/go/bin' >> /root/.bashrc
 RUN echo 'export GOROOT=/usr/bin/go' >> /root/.bashrc
 RUN echo 'export GOPATH=$HOME/Code' >> /root/.bashrc
 
-
-
-
+RUN echo "Enter" | vim +GoInstallBinaries || true
