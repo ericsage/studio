@@ -62,6 +62,7 @@ Plugin 'Shougo/unite-help.git'                 " Unite helpfiles
 Plugin 'Shougo/unite-session.git'              " Manage sessions with unite
 Plugin 'thinca/vim-unite-history'              " Allows for command search of unite
 Plugin 'Shougo/neomru.vim'                     " MRU plugin for unite
+Plugin 'Shougo/neocomplete.vim'                " Autocomplete
 
 " ----------- SYNTAX AND LINT SUPPORT ----------- "
 Plugin 'scrooloose/syntastic.git'              " Syntax linting for many languages
@@ -272,6 +273,8 @@ let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
 
+" ---------------- NEOCOMPLETE ----------------- "
+let g:neocomplete#enable_at_startup = 1
 
 " ------------------- UNITE -------------------- "
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
