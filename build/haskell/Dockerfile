@@ -7,4 +7,4 @@ RUN yum -y install stack
 
 ADD config.yaml /root/.stack/config.yaml
 
-RUN echo 'export PATH=$PATH:$HOME/.local/bin' >> root/.bashrc
+RUN echo 'export PATH=$PATH:$HOME/.local/bin' >> /root/.bashrc
