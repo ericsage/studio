@@ -6,7 +6,8 @@ RUN tar -C /usr/bin -xzf go.tar.gz
 RUN rm go.tar.gz
 
 RUN echo 'export PATH=$PATH:/usr/bin/go/bin' >> /root/.bashrc
-RUN echo 'export GOROOT=/usr/bin/go' >> /root/.bashrc
-RUN echo 'export GOPATH=$HOME/Code' >> /root/.bashrc
+
+ENV GOROOT=/usr/bin/go
+ENV GOPATH=$HOME/Code
 
 RUN echo "Enter" | vim +GoInstallBinaries || true
