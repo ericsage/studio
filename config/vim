@@ -91,7 +91,6 @@ set numberwidth=1                     " Show at least one col for the line numbe
 colorscheme gruvbox                   " Set colorscheme
 let g:airline_theme='solarized'
 set bg=dark                           " Colorscheme background color
-let g:airline_powerline_fonts = 1     " Make airline use powerline fonts
 
 " ----------------- STATUS LINE ----------------- "
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l " Custom status line
@@ -125,6 +124,9 @@ set matchtime=1                       " Make the match blink once
 set shiftwidth=2                      " How many columns of indentation >> and << adds
 set expandtab                         " Always use spaces when pressing tab
 set smarttab                          " Makes tab use smart choices for indenting
+
+"Show tabs as 4 spaces instead of the large tab character
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
 
 " ------------------- FOLDING ------------------- "
 set foldlevelstart=20                 " Don't show folds on start
@@ -190,6 +192,11 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" ------------------ QUICKFIX ------------------ "
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
+
 " -------------------- REDOS -------------------- "
 " Undo a redo with U
 nnoremap U :redo<cr>
@@ -199,18 +206,31 @@ nnoremap U :redo<cr>
 command Reg registers
 command Buf buffers
 
-" ---------------- OPEN DRAWERS  ---------------- "
+" ---------------- OPEN DRAWERS ---------------- "
 " Shortcuts for viewing drawers
 " Open Nerdree with Ctrl-\
 nmap <silent> <C-\> :NERDTreeToggle<CR>
 " Open TList with Ctrl-]
 nmap <silent> <C-]> :TlistToggle<CR>
 
-" ----------------- SEARCHING  ------------------ "
+" ----------------- SEARCHING ------------------ "
 " Use <C-L> to clear the highlighting of :set hlsearch.
 if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 endif
+
+" ------------------- GOVIM -------------------- "
+autocmd FileType go nmap <leader>g :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <Leader>c  <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <Leader>d <Plug>(go-doc)
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
 " ----------------------------------------------------------------------------- "
 " ----------------------------- F U N C T I O N S ----------------------------- "
@@ -226,12 +246,34 @@ autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
+    
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#cmd#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
 
 " ----------------------------------------------------------------------------- "
 " ----------------- P L U G I N - C U S T O M I Z A T I O N S ----------------- "
 " ----------------------------------------------------------------------------- "
 
-" ------------------- UNITE  -------------------- "
+" ------------------- GOVIM -------------------- "
+
+let g:go_fmt_command = "goimports"
+let g:go_metalinter_autosave = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+
+
+" ------------------- UNITE -------------------- "
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#custom#source('file_rec/async','sorters','sorter_rank', )
@@ -246,7 +288,7 @@ if executable('ag')
   let g:unite_source_grep_recursive_opt=''
 endif
 
-" ----------------- UTILSNIPS  ------------------ "
+" ----------------- UTILSNIPS ------------------ "
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
