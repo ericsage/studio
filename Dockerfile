@@ -38,7 +38,6 @@ RUN echo "Y" | /root/Code/google-cloud-sdk/bin/gcloud components install kubectl
 #Configure vim
 RUN git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 RUN echo "Enter" | vim +PluginInstall || true
-RUN echo "Enter" | vim +GoInstallBinaries || true
 
 WORKDIR /root
 
