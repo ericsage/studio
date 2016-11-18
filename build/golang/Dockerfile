@@ -7,6 +7,7 @@ RUN rm go.tar.gz
 
 RUN echo 'export PATH=$PATH:/usr/bin/go/bin' >> /root/.bashrc
 
+ENV PATH=$PATH:/usr/bin/go/bin
 ENV GOROOT=/usr/bin/go
 ENV GOPATH=$HOME/Code
 
