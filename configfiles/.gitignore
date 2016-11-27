@@ -1,0 +1,46 @@
+# ----------------------------------------------------------------------------- #
+# ---G--------------G--- SSSSSSS AAAAAAA GGGGGGG EEEEEEE ---G--------------G--- #
+# ---------------------- S       A     A G       E       ---------------------- #
+# ---I--------------I--- SSSSSSS AAAAAAA GGGGGGG EEEEEEE ---I--------------I--- #
+# ----------------------       S A     A G     G E       ---------------------- #
+# ---T--------------T--- SSSSSSS A     A GGGGGGG EEEEEEE ---T--------------T--- #
+# ----------------------------------------------------------------------------- #
+
+# ------ CONTENTS ------ #
+# 1. Compiled Sources
+# 2. Packages
+# 3. Logs and Databases
+# 4. OS Generated Files
+# -----------------------#
+
+" ------------------- COMPILED SOURCES ------------------- "
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+" ----------------------- PACKAGES ----------------------- "
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+" ------------------ LOGS AND DATABASES ------------------ "
+*.log
+*.sql
+*.sqlite
+
+" ------------------ OS GENERATED FILES ------------------ "
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

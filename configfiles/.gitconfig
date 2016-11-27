@@ -1,0 +1,101 @@
+# ----------------------------------------------------------------------------- #
+# ---G--------------G--- SSSSSSS AAAAAAA GGGGGGG EEEEEEE ---G--------------G--- #
+# ---------------------- S       A     A G       E       ---------------------- #
+# ---I--------------I--- SSSSSSS AAAAAAA GGGGGGG EEEEEEE ---I--------------I--- #
+# ----------------------       S A     A G     G E       ---------------------- #
+# ---T--------------T--- SSSSSSS A     A GGGGGGG EEEEEEE ---T--------------T--- #
+# ----------------------------------------------------------------------------- #
+
+# ------ CONTENTS ------ #
+# 1. User
+# 2. Options
+# 3. Colors
+# 4. Aliases
+# 5. Filters
+# -----------------------#
+
+# ----------------------------------------------------------------------------- #
+# ---------------------------------- U S E R ---------------------------------- #
+# ----------------------------------------------------------------------------- #
+
+[user]
+    name = Eric Sage
+    email = eric.david.sage@gmail.com
+
+# ----------------------------------------------------------------------------- #
+# ------------------------------- O P T I O N S ------------------------------- #
+# ----------------------------------------------------------------------------- #
+
+[core]
+    editor = vim                    # Use vim as the default editor
+    pager = less -x4                # Page files uses less, set tab spots at multiples of 4
+    excludesfile = /root/.gitignore # Set global ignore file
+
+[push]
+    default = simple                # Find and push only to the same branch on the remote
+
+[http]
+    sslVerify = false
+
+# ----------------------------------------------------------------------------- #
+# -------------------------------- C O L O R S -------------------------------- #
+# ----------------------------------------------------------------------------- #
+
+[color]
+    ui = true
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = red
+
+# ----------------------------------------------------------------------------- #
+# ------------------------------- A L I A S E S ------------------------------- #
+# ----------------------------------------------------------------------------- #
+
+# --------------------- URL --------------------- #
+
+[url "https://github.com/"]
+    insteadOf = gh:
+
+[url "https://gist.github.com/"]
+    insteadOf = gist:
+
+[url "https://bitbucket.org/"]
+    insteadOf = bb:
+
+# ------------------- COMMAND ------------------- #
+[alias]
+    lol = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+    graph = !git --no-pager log --all -n 15 --graph --abbrev-commit --decorate --format=tformat:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an <%ce>%C(reset)'
+    forgot = "!git config -l | grep alias | cut -c 7-" # Output all aliases
+    fdm = !git diff origin/master... --name-status # Files different from master on current branch
+    cp = cherry-pick
+    st = status -s
+    cl = clone
+    ci = commit
+    co = checkout
+    br = branch
+    diff = diff --word-diff
+    dc = diff --cached
+	  lg = log --color --graph --abbrev-commit\n --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset'
+
+# ----------------------------------------------------------------------------- #
+# ------------------------------- F I L T E R S ------------------------------- #
+# ----------------------------------------------------------------------------- #
+
+[filter "lfs"]  # A filter for large media files
+    clean = git lfs clean %f
+    smudge = git lfs smudge %f
+    required = true

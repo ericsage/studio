@@ -2,45 +2,44 @@
  Sage OS
 =========
 
-A complete development environment inside a docker container. Use as the base for environment specific containers, to ship your development environment, or install locally on osx.
+My collection of development environments inside a set of container images. Language specific derived images build off of a highly customized Fedora image that includes all of my dot files and favorite applications. Feel free to fork this project to create your own set of portable development environments or experiment with my own.
 
-Includes
---------
-
-- Tmux
-- Vim with a highly customized vimrc
-- Man pages and man command
-- The EPEL Repository and Docker Repository
-- Google Cloud SDK
-- AWS SDK
-- Pip
-- Docker client
-- Docker machine
-- Docker compose
-- Development Tools Group
-- Console Internet Tools Group
-
-Installation
-------------
-
-This environment requires either the [solarized or gruvbox terminal theme](https://github.com/ericsage/os/blob/master/terminal) color schemes and a [patched powerline font](https://github.com/ericsage/os/blob/master/font) to make tmux and vim look right. (Other color schemes not tested, but may look fine).
-
-To drop into the environment, point a docker client to a running docker daemon and then:
-
-``` docker run -it -priviliged ericsage/os ```
-
-Or to install locally on osx, run install/osx.sh
-
-Configuration
+Base Includes
 -------------
 
-You can pass an environment file to docker run's --env-file. You can also modify this file with export statements and source it in your bash_profile for native installs. Many tools like the SDKs have their own long list of variables, but here's an example file with all of the variables needed to make the bashrc fully functional:
+- Tmux, Vim with Lua, Git
+- CLI Internet applications (elinks, irssi, rtorrent, elinks, lynx, mutt)
+- Python & Python3 with setuptools, virtualenv, and wheel
+- Man pages
+- Google Cloud SDK
+- AWS SDK
+- Docker client
+- Kubernetes client
 
-```
-AWS_ACCESS_KEY=......
-AWS_DEFAULT_REGION=......
-AWS_ACCESS_KEY_ID=......
-AWS_SECRET_KEY=......
-AWS_VPC_ID=......
-GOOGLE_CLOUD_PROJECT=......
-```
+Languages
+---------
+Sage OS includes my favorite languages as images derived from the base. Docker Hub builds these images automatically with names as tags.
+
+| Tag           | Description           | Version |
+| ------------- | --------------------- | ------- |
+| erlang        | Erlang                | 19.1.5  |
+| golang        | Golang                | 1.7.3   |
+| haskell       | Haskell with Stack    | Latest  |
+| java          | Java with Maven       | 8u111   |
+| javascript    | Nodejs with NPM       | 6.x     |
+| ocaml         | Ocaml                 | Latest  |
+| r             | R                     | 3.3.1   |
+| Ruby          | Ruby                  | Latest  |
+| Rust          | Rust with Cargo       | Latest  |
+
+Usage
+-----
+To use the base image:
+
+``` docker run -it --name linux ericsage/os ```
+
+> Add the `--priviliged` flag to control the docker daemon from inside the container.
+
+To use a specific language derived from the base:
+
+``` docker run -it --name golang ericsage/os:golang ```
