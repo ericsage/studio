@@ -16,7 +16,7 @@ ADD repos /etc/yum.repos.d/
 
 #Install base packages
 RUN dnf clean all && dnf update -y
-RUN dnf install -y tmux vim elinks irssi rtorrent lynx mutt ctags git which man-pages man tree wget dig whois python
+RUN dnf install -y tmux vim elinks irssi rtorrent lynx mutt ctags git which man-pages man tree wget bind-utils whois python
 
 #Install and update Python2 tools
 RUN pip2 install --upgrade pip setuptools
