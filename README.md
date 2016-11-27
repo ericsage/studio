@@ -9,7 +9,7 @@ Base Includes
 
 - Tmux, Vim with Lua, Git
 - CLI Internet applications (elinks, irssi, rtorrent, elinks, lynx, mutt)
-- Python & Python3 with setuptools, virtualenv, and wheel
+- Python2 & Python3 with setuptools, virtualenv, and wheel
 - Man pages
 - Google Cloud SDK
 - AWS SDK
