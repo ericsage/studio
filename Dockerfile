@@ -18,9 +18,6 @@ ADD repos /etc/yum.repos.d/
 RUN dnf clean all && dnf update -y
 RUN dnf install -y tmux vim elinks irssi rtorrent lynx mutt ctags git which man-pages man tree wget bind-utils whois python
 
-#Install and update Python2 tools
-RUN pip2 install --upgrade pip setuptools
-
 #Install and update Python3 tools
 RUN pip3 install --upgrade pip setuptools
 RUN pip3 install virtualenv wheel
