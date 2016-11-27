@@ -1,5 +1,5 @@
 
 FROM ericsage/os
 
-RUN curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
-RUN yum install -y nodejs
+RUN curl -sL https://rpm.nodesource.com/setup_7.x | bash -
+RUN dnf install -y nodejs
