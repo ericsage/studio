@@ -47,4 +47,7 @@ To use a specific language derived from the base:
 
 Common usage:
 
-``` docker run -it -v ~/.aws:/root/.aws -v ~/Documents/Code:/root/Code/src --name linux -p 80:80 --privileged ericsage/os ``` 
+``` 
+docker run -it -v ~/.aws:/root/.aws -v ~/Documents/Code:/root/Code/src --name linux \
+--privileged ericsage/os 
+``` 
