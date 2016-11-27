@@ -5,8 +5,9 @@ MAINTAINER Eric Sage <eric.david.sage@gmail.com>
 #Clean root
 RUN rm /root/*
 
-#Disable dnf deltas
+#Configure dnf
 RUN echo "deltarpm=0" >> /etc/dnf/dnf.conf
+RUN echo "group_package_types=default, mandatory, optional" >> /etc/dnf/dnf.conf
 
 #Place config files
 ADD /configfiles /root
@@ -16,8 +17,8 @@ ADD repos /etc/yum.repos.d/
 
 #Install base packages
 RUN dnf clean all && dnf update -y
-RUN dnf group install -y "Development Tools" "C Development Tools and Libraries"
-RUN dnf install -y tmux vim elinks irssi rtorrent lynx mutt kernel-devel ctags git which man-pages man tree wget bind-utils whois python
+RUN dnf group install -y "Standard" "Text-based Internet" "Development Tools" "C Development Tools and Libraries"
+RUN dnf install -y tmux vim whois kernel-devel python
 
 #Install and update Python3 tools
 RUN pip3 install --upgrade pip setuptools
