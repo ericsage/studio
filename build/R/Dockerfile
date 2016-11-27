@@ -1,4 +1,4 @@
 
 FROM ericsage/os
 
-RUN yum install -y R
+RUN dnf install -y R
