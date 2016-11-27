@@ -16,7 +16,8 @@ ADD repos /etc/yum.repos.d/
 
 #Install base packages
 RUN dnf clean all && dnf update -y
-RUN dnf install -y tmux vim elinks irssi rtorrent lynx mutt ctags git which man-pages man tree wget bind-utils whois python
+RUN dnf group install -y "Development Tools" "C Development Tools and Libraries"
+RUN dnf install -y tmux vim elinks irssi rtorrent lynx mutt kernel-devel ctags git which man-pages man tree wget bind-utils whois python
 
 #Install and update Python3 tools
 RUN pip3 install --upgrade pip setuptools
@@ -27,6 +28,9 @@ RUN dnf install -y docker-engine google-cloud-sdk kubectl && pip3 install awscli
 
 #Install vim plugins
 RUN vim -u NONE +'silent! source ~/.vimrc' +PlugInstall +qa
+
+#Clean dnf cache
+RUN dnf clean all
 
 #Set the initial directory
 WORKDIR /root/Code/src
