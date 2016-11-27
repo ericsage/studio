@@ -6,9 +6,10 @@ My collection of development environments inside a set of container images. Lang
 
 Base Includes
 -------------
-
 - Tmux, Vim with Lua, Git
-- CLI Internet applications (elinks, irssi, rtorrent, elinks, lynx, mutt)
+- Standard Linux tools 
+- Development Tools (gcc, make, kernel headers, etc.)
+- CLI Internet applications (elinks, irssi, lynx, mutt, etc.)
 - Python2 & Python3 with setuptools, virtualenv, and wheel
 - Man pages
 - Google Cloud SDK
@@ -38,8 +39,12 @@ To use the base image:
 
 ``` docker run -it --name linux ericsage/os ```
 
-> Add the `--priviliged` flag to control the docker daemon from inside the container.
+> Add the `--privileged` flag to control the docker daemon from inside the container.
 
 To use a specific language derived from the base:
 
 ``` docker run -it --name golang ericsage/os:golang ```
+
+Common usage:
+
+``` docker run -it -v ~/.aws:/root/.aws -v ~/Documents/Code:/root/Code/src --name linux -p 80:80 --privileged ericsage/os ``` 
