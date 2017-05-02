@@ -1,0 +1,46 @@
+# ------------------I---------------------------------------I------------------ #
+# ---I-----IRSSI-------- SSSSSSS AAAAAAA GGGGGGG EEEEEEE --------IRSSI-----I--- #
+# ---------------------- S       A     A G       E       ---------------------- #
+# ---R-----IRSSI----R--- SSSSSSS AAAAAAA GGGGGGG EEEEEEE ---R----IRSSI-----R--- #
+# ----------------------       S A     A G     G E       ---------------------- #
+# ---C-----IRSSI-------- SSSSSSS A     A GGGGGGG EEEEEEE --------IRSSI-----C--- #
+# ------------------C---------------------------------------C------------------ #
+
+servers = (
+  { address = "chat.freenode.net"; chatnet = "Freenode"; port = "6667"; }
+);
+
+chatnets = {
+  Freenode = {
+    type      = "IRC";
+    max_kicks = "1";
+    max_msgs  = "4";
+    max_whois = "1";
+  };
+};
+
+channels = (
+  { name = "#go-nuts"; chatnet = "Freenode"; autojoin = "Yes"; }
+)
+
+settings = {
+  "fe-common/core" = {
+    # Solarized
+    theme = "solarized-universal";
+    hilight_color = "= %R";
+  };
+  core = { real_name = "root"; user_name = "root"; nick = "root"; };
+  "fe-text" = { actlist_sort = "refnum"; };
+};
+
+hilights = (
+  { text = "confuzed"; color = "%M"; nick = "yes"; word = "yes"; }
+);
+
+statusbar = {
+  items = {
+    lag = "{sb Lag: %m$0-%n}";
+    act = "{sb Act: $0-}";
+    more = "%k%3-- more --%n";
+  };
+};
