@@ -46,7 +46,6 @@ Plug 'bronson/vim-trailing-whitespace'       " Marks all trailing spaces
 Plug 'nathanaelkane/vim-indent-guides'       " Show fancy indent markers
 Plug 'vim-airline/vim-airline'               " Customizes the status line
 Plug 'vim-airline/vim-airline-themes'        " Themes for the status line
-Plug 'edkolev/tmuxline.vim'                  " Match tmux to airline
 
 " ----------------- COLORSCHEME ----------------- "
 Plug 'altercation/vim-colors-solarized'      " Solarized
@@ -264,11 +263,7 @@ endfunction
 " ----------------- P L U G I N - C U S T O M I Z A T I O N S ----------------- "
 " ----------------------------------------------------------------------------- "
 
-" ----------------- TMUX LINE ------------------ "
-let g:tmuxline_powerline_separators = 0
-
 " ------------------- GOVIM -------------------- "
-
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 1
 let g:go_highlight_types = 1
