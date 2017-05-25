@@ -71,6 +71,8 @@ Plug 'scrooloose/syntastic'                  " Syntax linting for many languages
 Plug 'tpope/vim-haml'                        " Syntax support for Haml, Sass, and SCSS
 Plug 'vim-ruby/vim-ruby'                     " Ruby runtime bindings and compilers
 Plug 'elzr/vim-json'                         " JSON syntax support
+Plug 'pangloss/vim-javascript'               " Better Javascript syntax support
+Plug 'mxw/vim-jsx'                           " JSX support for Javascript
 Plug 'elixir-lang/vim-elixir'                " Elixir syntax support
 Plug 'fatih/vim-go'                          " Golang syntax support
 
