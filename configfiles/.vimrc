@@ -65,7 +65,7 @@ Plug 'Shougo/unite-session'                  " Manage sessions with unite
 Plug 'thinca/vim-unite-history'              " Allows for command search of unite
 Plug 'Shougo/neomru.vim'                     " MRU plugin for unite
 Plug 'Shougo/neocomplete.vim'                " Autocomplete
-Plug 'Shougo//neoinclude.vim'                " Include header info in autocomplete
+Plug 'Shougo/neoinclude.vim'                " Include header info in autocomplete
 
 " ----------- SYNTAX AND LINT SUPPORT ----------- "
 Plug 'scrooloose/syntastic'                  " Syntax linting for many languages
@@ -285,3 +285,18 @@ let g:neocomplete#enable_at_startup = 1
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" ----------------- SYNTASTIC ------------------ "
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" ------------------- RUST --------------------- "
+let g:rustfmt_command = "rustup run nightly rustfmt"
+let g:rustfmt_autosave = 1
+let g:syntastic_rust_checkers = ['rustc']
