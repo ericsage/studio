@@ -65,16 +65,19 @@ Plug 'Shougo/unite-session'                  " Manage sessions with unite
 Plug 'thinca/vim-unite-history'              " Allows for command search of unite
 Plug 'Shougo/neomru.vim'                     " MRU plugin for unite
 Plug 'Shougo/neocomplete.vim'                " Autocomplete
+Plug 'Shougo//neoinclude.vim'                " Include header info in autocomplete
 
 " ----------- SYNTAX AND LINT SUPPORT ----------- "
 Plug 'scrooloose/syntastic'                  " Syntax linting for many languages
-Plug 'tpope/vim-haml'                        " Syntax support for Haml, Sass, and SCSS
+Plug 'tpope/im-haml'                         " Syntax support for Haml, Sass, and SCSS
 Plug 'vim-ruby/vim-ruby'                     " Ruby runtime bindings and compilers
 Plug 'elzr/vim-json'                         " JSON syntax support
 Plug 'pangloss/vim-javascript'               " Better Javascript syntax support
 Plug 'mxw/vim-jsx'                           " JSX support for Javascript
 Plug 'elixir-lang/vim-elixir'                " Elixir syntax support
-Plug 'fatih/vim-go'                          " Golang syntax support
+Plug 'fatih/vim-go'                          " Golang IDE support
+Plug 'rust-lang/rust.vim'                    " Rust IDE support
+Plug 'racer-rust/vim-racer'                  " Rust autocomplate support
 
 call plug#end()
 
