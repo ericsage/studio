@@ -77,7 +77,7 @@ Plug 'mxw/vim-jsx'                           " JSX support for Javascript
 Plug 'elixir-lang/vim-elixir'                " Elixir syntax support
 Plug 'fatih/vim-go'                          " Golang IDE support
 Plug 'rust-lang/rust.vim'                    " Rust IDE support
-Plug 'racer-rust/vim-racer'                  " Rust autocomplate support
+Plug 'racer-rust/vim-racer'                  " Rust autocomplete support
 
 call plug#end()
 
