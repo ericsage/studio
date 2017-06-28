@@ -36,7 +36,8 @@ pip3 install awscli
 #Install the protocol buffers compiler
 RUN \
 wget https://github.com/google/protobuf/releases/download/v3.1.0/protoc-3.1.0-linux-x86_64.zip && \
-unzip protoc-3.1.0-linux-x86_64.zip -d protobuf && mv protobuf/bin/protoc /usr/bin && rm -rf proto*
+unzip protoc-3.1.0-linux-x86_64.zip -d protobuf && \
+mv protobuf/bin/protoc /usr/bin && mv protobuf/include/google /usr/include && rm -rf proto*
 
 #Install vim plugins
 RUN vim -u NONE +'silent! source ~/.vimrc' +PlugInstall +qa
