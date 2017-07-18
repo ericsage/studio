@@ -1,49 +1,59 @@
+FROM fedora:26
+LABEL maintainer "Eric Sage <eric.david.sage@gmail.com>"
 
-FROM fedora:25
-MAINTAINER Eric Sage <eric.david.sage@gmail.com>
-
-#Clean root
+# Clean root
 RUN rm /root/*
 
-#Configure dnf
+# Reinstall packages that were installed without documentation
 RUN \
-echo "deltarpm=0" >> /etc/dnf/dnf.conf && \
-echo "group_package_types=default, mandatory, optional" >> /etc/dnf/dnf.conf
+dnf clean all && dnf update -y && \
+dnf reinstall -y bash dnf dnf-yum rootfiles tar fedora-release
 
-#Place config files
+# Place config files
 ADD /configfiles /root
 
-#Add repositories
+# Add repositories
 ADD repos /etc/yum.repos.d/
 
-#Install base packages
+# Install base packages
 RUN \
+echo "deltarpm=0" >> /etc/dnf/dnf.conf && \
+echo "group_package_types=default, mandatory, optional" >> /etc/dnf/dnf.conf \
 dnf clean all && dnf update -y && \
 dnf group install -y "Standard" && \
 dnf install -y $(cat /root/.packages) && \
 dnf clean all
 
-#Install and update Python3 tools
+# Install and update Python3 tools
 RUN \
 pip3 install --upgrade pip setuptools && \
 pip3 install virtualenv wheel
 
-#Install SDKs and Cloud Management Tools
+# Install Golang
+RUN \
+curl -L https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz > go.tar.gz && \
+tar -C /usr/bin -xzf go.tar.gz && \
+rm go.tar.gz
+
+# Install SDKs and Cloud Management Tools
 RUN \
 dnf install -y docker-engine google-cloud-sdk kubectl && \
 pip3 install awscli
 
-#Install the protocol buffers compiler
+# Install the protocol buffers compiler and included headers
 RUN \
 wget https://github.com/google/protobuf/releases/download/v3.1.0/protoc-3.1.0-linux-x86_64.zip && \
 unzip protoc-3.1.0-linux-x86_64.zip -d protobuf && \
 mv protobuf/bin/protoc /usr/bin && mv protobuf/include/google /usr/include && rm -rf proto*
 
-#Install vim plugins
-RUN vim -u NONE +'silent! source ~/.vimrc' +PlugInstall +qa
+# Install vim plugins
+RUN \
+vim -u NONE +'silent! source ~/.vimrc' +PlugInstall +qa! %> /dev/null && \
+export GOROOT="/usr/bin/go" ; export GOPATH="/root/Code" ; export PATH=$PATH:/usr/bin/go/bin ; \
+echo " " | vim +GoInstallBinaries +qa! %> /dev/null
 
-#Set the initial directory
+# Set the initial directory
 WORKDIR /root/Code/src
 
-#Set command to shell
-CMD ["/bin/bash"]
+# Set command to primary shell
+CMD ["/bin/tmux", "-2"]
