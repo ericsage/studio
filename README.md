@@ -8,8 +8,8 @@ Base Edition
 The base edition focuses on Go, C++, C, and Python development and DevOps. This studio container is tested in Terminal.app with the [Solarized color scheme](https://github.com/tomislav/osx-terminal.app-colors-solarized).
 
 - Based on [Fedora 26](https://hub.docker.com/_/fedora/)
-- Vim with [plugins](https://github.com/ericsage/os/blob/master/configfiles/.vimrc#L29-L76)
-- Fuzzy finding in Vim and Bash with fzf
+- Vim with plenty of [plugins](https://github.com/ericsage/os/blob/master/configfiles/.vimrc#L29-L76)
+- Fuzzy finding in Vim and Bash with fzf, searching with ag
 - [These packages](https://github.com/ericsage/os/blob/master/configfiles/.packages#L1-L59) with documentation
 - Golang 1.8.3
 - Python2 & Python3 with setuptools, virtualenv, and wheel
