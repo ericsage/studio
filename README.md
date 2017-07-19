@@ -1,13 +1,12 @@
 
 Sage Studio
 ===========
-A complete development environment inside of a Docker image.
+A complete development environment inside of a Docker image!
 
 Base Edition
 ------------
 The base edition focuses on Go, C++, C, and Python development and DevOps. This studio container is tested in Terminal.app with the [Solarized color scheme](https://github.com/tomislav/osx-terminal.app-colors-solarized).
 
-Features
 - Based on [Fedora 26](https://hub.docker.com/_/fedora/)
 - Vim with [plugins](https://github.com/ericsage/os/blob/master/configfiles/.vimrc#L29-L76)
 - Fuzzy finding in Vim and Bash with fzf
@@ -28,11 +27,6 @@ Language Editions
 ---------
 Child images are built from the base edition and uploaded as tags on the base repository. This drastically reduces the size of the studio for some langauges and creates better sandboxing between development environments.
 
-Example:
-```
-docker run -it --name studio-js ericsage/studio:javascript
-```
-
 | Tag           | Description             | Version                    |
 | ------------- | ----------------------- | -------------------------- |
 | javascript    | Nodejs with NPM         | Node 7.x with NPM 5.x      |
@@ -44,6 +38,11 @@ docker run -it --name studio-js ericsage/studio:javascript
 | erlang        | Erlang                  | Installed from Fedora Repo |
 | elixir        | Elixir                  | Installed from Fedora Repo |
 | r             | R                       | Installed from Fedora Repo |
+
+Example:
+```
+docker run -it --name studio-js ericsage/studio:javascript
+```
 
 Usage
 -----
