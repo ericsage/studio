@@ -1,53 +1,60 @@
 
- Sage OS
-=========
+Sage Studio
+===========
+A complete development environment inside of a Docker image.
 
-My collection of development environments inside a set of container images. Language specific derived images build off of a highly customized Fedora image that includes all of my dot files and favorite applications. Feel free to fork this project to create your own set of portable development environments or experiment with my own.
+Base Edition
+------------
+The base edition focuses on Go, C++, C, and Python development and DevOps. This studio container is tested in Terminal.app with the [Solarized color scheme](https://github.com/tomislav/osx-terminal.app-colors-solarized).
 
-Base Includes
--------------
-- Tmux, Vim with Lua, Git
-- Standard Linux tools 
-- Development Tools (gcc, make, kernel headers, etc.)
-- CLI Internet applications (elinks, irssi, lynx, mutt, etc.)
+Features
+- Based on [Fedora 26](https://hub.docker.com/_/fedora/)
+- Vim with [plugins](https://github.com/ericsage/os/blob/master/configfiles/.vimrc#L29-L76)
+- Fuzzy finding in Vim and Bash with fzf
+- [These packages](https://github.com/ericsage/os/blob/master/configfiles/.packages#L1-L59) with documentation
+- Golang 1.8.3
 - Python2 & Python3 with setuptools, virtualenv, and wheel
-- Man pages
-- Google Cloud SDK
-- AWS SDK
-- Docker client
-- Kubernetes client
+- AWS && Google Cloud SDK
+- Docker, Docker Compose, and Kubectl
+- Bash inside of tmux
+- Colors set for the [solarized colorscheme](http://ethanschoonover.com/solarized)
 
-Languages
+Example:
+```
+docker run -it --name studio --rm ericsage/studio
+```
+
+Language Editions
 ---------
-Sage OS includes my favorite languages as images derived from the base. Docker Hub builds these images automatically with names as tags.
+Child images are built from the base edition and uploaded as tags on the base repository. This drastically reduces the size of the studio for some langauges and creates better sandboxing between development environments.
 
-| Tag           | Description           | Version |
-| ------------- | --------------------- | ------- |
-| erlang        | Erlang                | 19.1.5  |
-| golang        | Golang                | 1.7.3   |
-| haskell       | Haskell with Stack    | Latest  |
-| java          | Java with Maven       | 8u111   |
-| javascript    | Nodejs with NPM       | 6.x     |
-| ocaml         | Ocaml                 | Latest  |
-| r             | R                     | 3.3.1   |
-| Ruby          | Ruby                  | Latest  |
-| Rust          | Rust with Cargo       | Latest  |
+Example:
+```
+docker run -it --name studio-js ericsage/studio:javascript
+```
+
+| Tag           | Description             | Version                    |
+| ------------- | ----------------------- | -------------------------- |
+| javascript    | Nodejs with NPM         | Node 7.x with NPM 5.x      |
+| rust          | Rust, Cargo, and rustup | Latest stable and nightly  |
+| haskell       | Haskell Stack           | Latest Stack sans compiler |
+| ocaml         | Ocaml and OPAM          | Latest opam                |
+| ruby          | Ruby                    | Latest stable source build |
+| java          | Java with Maven         | JDK8u141 & Maven 3.5.0     |
+| erlang        | Erlang                  | Installed from Fedora Repo |
+| elixir        | Elixir                  | Installed from Fedora Repo |
+| r             | R                       | Installed from Fedora Repo |
 
 Usage
 -----
-To use the base image:
+The studio is designed to mount a host directory with software projects onto `/root/Code/src/github.com/ericsage`. This persists projects across container lifetimes and allows tools external to the container to interact with the projects. It's also a good idea to mount the Docker socket so that Docker can be used normally for development inside the studio. Anything else that should be persistant like ssh keys or AWS credentials can be mounted from the host, and ports can be opened to test web applications from a host browser.
 
-``` docker run -it --name linux ericsage/os ```
-
-> Add the `--privileged` flag to control the docker daemon from inside the container.
-
-To use a specific language derived from the base:
-
-``` docker run -it --name golang ericsage/os:golang ```
-
-Common usage:
-
-``` 
-docker run -it -v ~/.aws:/root/.aws -v ~/Documents/Code:/root/Code/src --name linux \
---privileged ericsage/os 
-``` 
+Full Example:
+```
+docker run -it --name studio --rm \
+-v ~/Documents/Secrets/aws:/root/.aws \
+-v ~/Documents/Secrets/key:/root/.key \
+-v ~/Documents/Code/Golang:/root/Code/src \
+-v /var/run/docker.sock:/var/run/docker.sock \
+ericsage/studio
+```
