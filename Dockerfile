@@ -35,9 +35,9 @@ curl -L https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz > go.ta
 tar -C /usr/bin -xzf go.tar.gz && \
 rm go.tar.gz
 
-# Install SDKs and Cloud Management Tools
+# Install Docker, SDKs, and Cloud Management Tools
 RUN \
-dnf install -y docker-engine google-cloud-sdk kubectl && \
+dnf install -y docker-engine docker-compose google-cloud-sdk kubectl && \
 pip3 install awscli
 
 # Install the protocol buffers compiler and included headers
@@ -53,7 +53,10 @@ export GOROOT="/usr/bin/go" ; export GOPATH="/root/Code" ; export PATH=$PATH:/us
 echo " " | vim +GoInstallBinaries +qa! %> /dev/null
 
 # Set the initial directory
-WORKDIR /root/Code/src
+WORKDIR /root/Code/src/github.com/ericsage
+
+# Set the language
+ENV LANG en_US.UTF-8
 
 # Set command to primary shell
 CMD ["/bin/tmux", "-2"]

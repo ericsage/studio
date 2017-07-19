@@ -206,7 +206,22 @@ nmap <silent> <C-\> :NERDTreeToggle<CR>
 " Open TList with Ctrl-]
 nmap <silent> <C-]> :TlistToggle<CR>
 
+" ------------------- FINDING ------------------- "
+"Search files in git
+nnoremap <C-f> :GFiles<CR>
+"Search all files
+nnoremap <leader>fa :Files<CR>
+"Search lines in all open buffers
+nnoremap <leader>fl :Lines<CR>
+"Search command history
+nnoremap <leader>fc :History:<CR>
+"Search search history
+nnoremap <leader>fs :History/<CR>
+"Search key mappings
+nnoremap <leader>fm :Maps<CR>
+
 " ------------------ SEARCHING ------------------ "
+"Clear the search highlighting
 nnoremap <C-s> :nohlsearch<cr>
 
 " ----------------------------------------------------------------------------- "
@@ -298,5 +313,6 @@ let g:rustfmt_autosave = 1
 
 set background=dark                   " Set the colorscheme background color
 colorscheme solarized                 " Set a colorscheme
+highlight CursorLine ctermbg=White    " Set the cursorline background to white
 
 " ----------------------------------------------------------------------------- "

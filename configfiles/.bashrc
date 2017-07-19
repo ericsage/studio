@@ -20,17 +20,19 @@
 # ----------------------------------------------------------------------------- #
 
 gb () {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/⑂ \1/'
+  git branch 2> /dev/null | sed -e 's/* \(.*\)/ ⑂ \1 /'
 }
-ARROW=''
+gl () {
+  git log --oneline -n 1 2> /dev/null | sed -e 's/\(.*\)/✎ \1 /'
+}
+ARROW='▶ '
+HOURGLASS='⧖'
+COMPASS='✧'
+WHITE_ON_CYAN='\e[6;37;46m'
+WHITE_ON_GOLD='\e[5;37;43m'
+GREY_ON_WHITE='\e[1;32;47m'
 RESET='\e[0m'
-BLACK_BG='\e[48;5;0m'
-WHITE_FG='\e[38;5;255m'
-RED_FG='\e[38;5;1m'
-RED_BG='\e[48;5;1m'
-YELLOW_FG='\e[38;5;9m'
-YELLOW_BG='\e[48;5;9m'
-export PS1="\n\[$RED_BG\]\[$WHITE_FG\] \w \[$RESET\]\[$RED_FG\]\[$YELLOW_BG\]\[$WHITE_FG\] \$(gb) \[$RESET\]\[$BLACK_BG\]\[$YELLOW_FG\]\[$RESET\] "
+export PS1="\n\[$WHITE_ON_GOLD\] \[$HOURGLASS\] \d \t \[$HOURGLASS\] \[$WHITE_ON_CYAN\] \[$COMPASS\] \w \[$COMPASS\] \[$GREY_ON_WHITE\]\$(gb)\$(gl)\n\[$WHITE_ON_CYAN\] \! \$ \[$RESET\] "
 
 # ----------------------------------------------------------------------------- #
 # -------------------------------- C O N F I G -------------------------------- #
@@ -151,6 +153,7 @@ httpDebug () { /usr/bin/curl $@ -o /dev/null -w "dns: %{time_namelookup} connect
 # ------------------------------- E X P O R T S ------------------------------- #
 # ----------------------------------------------------------------------------- #
 
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 export GOROOT=/usr/bin/go
 export GOPATH=/root/Code
 export PATH=$PATH:$HOME/Code/bin:/usr/bin/go/bin

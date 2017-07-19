@@ -50,6 +50,7 @@ rtorrent
 strace
 sysstat
 systemtap
+the_silver_searcher
 tmux
 valgrind
 vim

@@ -1,4 +1,3 @@
-
-FROM ericsage/os
+FROM ericsage/studio
 
 dnf install -y elixir
