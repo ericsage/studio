@@ -45,6 +45,8 @@ patchutils
 pkgconfig
 procinfo
 pscan
+python2-jedi
+python3-jedi
 remake
 rtorrent
 strace
