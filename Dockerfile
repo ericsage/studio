@@ -27,7 +27,7 @@ dnf clean all
 # Install and update Python3 tools
 RUN \
 pip3 install --upgrade pip setuptools && \
-pip3 install virtualenv wheel
+pip3 install virtualenv wheel twine
 
 # Install Golang
 RUN \
