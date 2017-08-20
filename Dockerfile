@@ -41,6 +41,9 @@ curl -sL https://rpm.nodesource.com/setup_8.x | bash - && \
 dnf install -y nodejs && \
 npm completion >> /root/.bashrc
 
+# Install Javscript tools
+RUN npm install create-react-app
+
 # Install Docker, SDKs, and Cloud Management Tools
 RUN \
 dnf install -y docker-engine docker-compose google-cloud-sdk kubectl && \
