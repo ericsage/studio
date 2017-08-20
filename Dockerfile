@@ -35,6 +35,12 @@ curl -L https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz > go.ta
 tar -C /usr/bin -xzf go.tar.gz && \
 rm go.tar.gz
 
+# Install Javascript
+RUN \
+curl -sL https://rpm.nodesource.com/setup_8.x | bash - && \
+dnf install -y nodejs && \
+npm completion >> /root/.bashrc
+
 # Install Docker, SDKs, and Cloud Management Tools
 RUN \
 dnf install -y docker-engine docker-compose google-cloud-sdk kubectl && \
