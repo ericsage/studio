@@ -31,7 +31,7 @@ pip3 install virtualenv wheel twine
 
 # Install Golang
 RUN \
-curl -L https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz > go.tar.gz && \
+curl -L https://storage.googleapis.com/golang/go1.9.linux-amd64.tar.gz > go.tar.gz && \
 tar -C /usr/bin -xzf go.tar.gz && \
 rm go.tar.gz
 
@@ -51,8 +51,8 @@ pip3 install awscli
 
 # Install the protocol buffers compiler and included headers
 RUN \
-wget https://github.com/google/protobuf/releases/download/v3.1.0/protoc-3.1.0-linux-x86_64.zip && \
-unzip protoc-3.1.0-linux-x86_64.zip -d protobuf && \
+wget https://github.com/google/protobuf/releases/download/v3.4.0/protoc-3.4.0-linux-x86_64.zip && \
+unzip protoc-3.4.0-linux-x86_64.zip -d protobuf && \
 mv protobuf/bin/protoc /usr/bin && mv protobuf/include/google /usr/include && rm -rf proto*
 
 # Install vim plugins
