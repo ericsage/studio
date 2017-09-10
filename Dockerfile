@@ -35,14 +35,14 @@ curl -L https://storage.googleapis.com/golang/go1.9.linux-amd64.tar.gz > go.tar.
 tar -C /usr/bin -xzf go.tar.gz && \
 rm go.tar.gz
 
-# Install Javascript
+# Install Node
 RUN \
 curl -sL https://rpm.nodesource.com/setup_8.x | bash - && \
-dnf install -y nodejs && \
+dnf install -y nodejs yarn && \
 npm completion >> /root/.bashrc
 
 # Install Javscript tools
-RUN npm install create-react-app
+RUN npm install -g create-react-app create-react-native-app
 
 # Install Docker, SDKs, and Cloud Management Tools
 RUN \
